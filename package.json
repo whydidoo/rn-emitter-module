@@ -41,11 +41,14 @@
   "workspaces": [
     "example"
   ],
-  "repository": "https://github.com/amirsaifutdinov/react-native-rn-emitter-module.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whydidoo/rn-emitter-module.git"
+  },
   "author": "Amir Saifutdinov",
   "license": "MIT",
-  "bugs": "https://github.com/amirsaifutdinov/react-native-rn-emitter-module/issues",
-  "homepage": "https://github.com/amirsaifutdinov/react-native-rn-emitter-module#readme",
+  "bugs": "https://github.com/whydidoo/rn-emitter-module.git/issues",
+  "homepage": "https://github.com/whydidoo/rn-emitter-module.git#readme",
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
