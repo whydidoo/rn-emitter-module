@@ -28,6 +28,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       in: window,
       launchOptions: launchOptions
     )
+    
+    NativeEmitterBridge.shared // <— просто триггерни init
 
     return true
   }
