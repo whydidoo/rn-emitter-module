@@ -64,7 +64,7 @@ class HybridRnEmitterModule: HybridRnEmitterModuleSpec {
             return
         }
 
-        let data = userInfo["data"] as? NitroModules.AnyMapHolder
+        let data = userInfo["data"] as? AnyMapHolder
         listeners.forEach { $0.callback(event, data) }
     }
 }

@@ -1,7 +1,7 @@
 {
-  "name": "react-native-rn-emitter-module",
-  "version": "0.1.0",
-  "description": "react-native-rn-emitter-module is a react native package built with Nitro",
+  "name": "@whydidoo/rn-emitter-module",
+  "version": "0.1.1",
+  "description": "rn-emitter-module is a react native package built with Nitro",
   "main": "./lib/commonjs/index.js",
   "module": "./lib/module/index.js",
   "types": "./lib/typescript/src/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "keywords": [
     "react-native",
-    "react-native-rn-emitter-module"
+    "rn-emitter-module"
   ],
   "files": [
     "src",
@@ -51,7 +51,7 @@
   "homepage": "https://github.com/whydidoo/rn-emitter-module.git#readme",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
     "@jamesacarr/eslint-formatter-github-actions": "^0.2.0",
