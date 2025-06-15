@@ -1,0 +1,24 @@
+{
+  "$schema": "https://nitro.margelo.com/nitro.schema.json",
+  "cxxNamespace": [
+    "rnemittermodule"
+  ],
+  "ios": {
+    "iosModuleName": "RnEmitterModule"
+  },
+  "android": {
+    "androidNamespace": [
+      "rnemittermodule"
+    ],
+    "androidCxxLibName": "RnEmitterModule"
+  },
+  "autolinking": {
+    "RnEmitterModule": {
+      "swift": "HybridRnEmitterModule",
+      "kotlin": "HybridRnEmitterModule"
+    }
+  },
+  "ignorePaths": [
+    "**/node_modules"
+  ]
+}
