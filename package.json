@@ -38,6 +38,7 @@
     "*.podspec",
     "README.md"
   ],
+  "private": true,
   "workspaces": [
     "example"
   ],

@@ -14,10 +14,9 @@ namespace margelo::nitro::rnemittermodule {
     HybridObject::loadHybridMethods();
     // load custom methods/properties
     registerHybrids(this, [](Prototype& prototype) {
-      prototype.registerHybridMethod("sum", &HybridRnEmitterModuleSpec::sum);
-      prototype.registerHybridMethod("sendNativeEvent", &HybridRnEmitterModuleSpec::sendNativeEvent);
-      prototype.registerHybridMethod("addRNFromNativeListener", &HybridRnEmitterModuleSpec::addRNFromNativeListener);
-      prototype.registerHybridMethod("removeListener", &HybridRnEmitterModuleSpec::removeListener);
+      prototype.registerHybridMethod("emitToNative", &HybridRnEmitterModuleSpec::emitToNative);
+      prototype.registerHybridMethod("addNativeEventListener", &HybridRnEmitterModuleSpec::addNativeEventListener);
+      prototype.registerHybridMethod("removeNativeEventListener", &HybridRnEmitterModuleSpec::removeNativeEventListener);
     });
   }
 

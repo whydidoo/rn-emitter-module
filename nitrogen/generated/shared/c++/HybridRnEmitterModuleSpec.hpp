@@ -52,10 +52,9 @@ namespace margelo::nitro::rnemittermodule {
 
     public:
       // Methods
-      virtual double sum(double num1, double num2) = 0;
-      virtual void sendNativeEvent(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) = 0;
-      virtual double addRNFromNativeListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) = 0;
-      virtual void removeListener(double id) = 0;
+      virtual void emitToNative(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) = 0;
+      virtual double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) = 0;
+      virtual void removeNativeEventListener(double id) = 0;
 
     protected:
       // Hybrid Setup

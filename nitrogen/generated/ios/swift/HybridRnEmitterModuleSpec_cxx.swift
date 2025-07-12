@@ -101,21 +101,9 @@ public class HybridRnEmitterModuleSpec_cxx {
 
   // Methods
   @inline(__always)
-  public final func sum(num1: Double, num2: Double) -> bridge.Result_double_ {
+  public final func emitToNative(message: std.string, data: bridge.std__optional_std__shared_ptr_AnyMap__) -> bridge.Result_void_ {
     do {
-      let __result = try self.__implementation.sum(num1: num1, num2: num2)
-      let __resultCpp = __result
-      return bridge.create_Result_double_(__resultCpp)
-    } catch (let __error) {
-      let __exceptionPtr = __error.toCpp()
-      return bridge.create_Result_double_(__exceptionPtr)
-    }
-  }
-  
-  @inline(__always)
-  public final func sendNativeEvent(message: std.string, data: bridge.std__optional_std__shared_ptr_AnyMap__) -> bridge.Result_void_ {
-    do {
-      try self.__implementation.sendNativeEvent(message: String(message), data: { () -> AnyMapHolder? in
+      try self.__implementation.emitToNative(message: String(message), data: { () -> AnyMapHolder? in
         if let __unwrapped = data.value {
           return AnyMapHolder(withCppPart: __unwrapped)
         } else {
@@ -130,9 +118,9 @@ public class HybridRnEmitterModuleSpec_cxx {
   }
   
   @inline(__always)
-  public final func addRNFromNativeListener(callback: bridge.Func_void_std__string_std__optional_std__shared_ptr_AnyMap__) -> bridge.Result_double_ {
+  public final func addNativeEventListener(callback: bridge.Func_void_std__string_std__optional_std__shared_ptr_AnyMap__) -> bridge.Result_double_ {
     do {
-      let __result = try self.__implementation.addRNFromNativeListener(callback: { () -> (String, AnyMapHolder?) -> Void in
+      let __result = try self.__implementation.addNativeEventListener(callback: { () -> (String, AnyMapHolder?) -> Void in
         let __wrappedFunction = bridge.wrap_Func_void_std__string_std__optional_std__shared_ptr_AnyMap__(callback)
         return { (__message: String, __data: AnyMapHolder?) -> Void in
           __wrappedFunction.call(std.string(__message), { () -> bridge.std__optional_std__shared_ptr_AnyMap__ in
@@ -153,9 +141,9 @@ public class HybridRnEmitterModuleSpec_cxx {
   }
   
   @inline(__always)
-  public final func removeListener(id: Double) -> bridge.Result_void_ {
+  public final func removeNativeEventListener(id: Double) -> bridge.Result_void_ {
     do {
-      try self.__implementation.removeListener(id: id)
+      try self.__implementation.removeNativeEventListener(id: id)
       return bridge.create_Result_void_()
     } catch (let __error) {
       let __exceptionPtr = __error.toCpp()

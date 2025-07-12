@@ -59,30 +59,22 @@ namespace margelo::nitro::rnemittermodule {
 
   public:
     // Methods
-    inline double sum(double num1, double num2) override {
-      auto __result = _swiftPart.sum(std::forward<decltype(num1)>(num1), std::forward<decltype(num2)>(num2));
+    inline void emitToNative(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) override {
+      auto __result = _swiftPart.emitToNative(message, data);
+      if (__result.hasError()) [[unlikely]] {
+        std::rethrow_exception(__result.error());
+      }
+    }
+    inline double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) override {
+      auto __result = _swiftPart.addNativeEventListener(callback);
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());
       }
       auto __value = std::move(__result.value());
       return __value;
     }
-    inline void sendNativeEvent(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) override {
-      auto __result = _swiftPart.sendNativeEvent(message, data);
-      if (__result.hasError()) [[unlikely]] {
-        std::rethrow_exception(__result.error());
-      }
-    }
-    inline double addRNFromNativeListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) override {
-      auto __result = _swiftPart.addRNFromNativeListener(callback);
-      if (__result.hasError()) [[unlikely]] {
-        std::rethrow_exception(__result.error());
-      }
-      auto __value = std::move(__result.value());
-      return __value;
-    }
-    inline void removeListener(double id) override {
-      auto __result = _swiftPart.removeListener(std::forward<decltype(id)>(id));
+    inline void removeNativeEventListener(double id) override {
+      auto __result = _swiftPart.removeNativeEventListener(std::forward<decltype(id)>(id));
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());
       }
