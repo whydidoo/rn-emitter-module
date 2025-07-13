@@ -101,11 +101,11 @@ public class HybridRnEmitterModuleSpec_cxx {
 
   // Methods
   @inline(__always)
-  public final func emitToNative(message: std.string, data: bridge.std__optional_std__shared_ptr_AnyMap__) -> bridge.Result_void_ {
+  public final func emitToNative(message: std.string, data: bridge.std__optional_std__string_) -> bridge.Result_void_ {
     do {
-      try self.__implementation.emitToNative(message: String(message), data: { () -> AnyMapHolder? in
+      try self.__implementation.emitToNative(message: String(message), data: { () -> String? in
         if let __unwrapped = data.value {
-          return AnyMapHolder(withCppPart: __unwrapped)
+          return String(__unwrapped)
         } else {
           return nil
         }
@@ -118,14 +118,14 @@ public class HybridRnEmitterModuleSpec_cxx {
   }
   
   @inline(__always)
-  public final func addNativeEventListener(callback: bridge.Func_void_std__string_std__optional_std__shared_ptr_AnyMap__) -> bridge.Result_double_ {
+  public final func addNativeEventListener(callback: bridge.Func_void_std__string_std__optional_std__string_) -> bridge.Result_double_ {
     do {
-      let __result = try self.__implementation.addNativeEventListener(callback: { () -> (String, AnyMapHolder?) -> Void in
-        let __wrappedFunction = bridge.wrap_Func_void_std__string_std__optional_std__shared_ptr_AnyMap__(callback)
-        return { (__message: String, __data: AnyMapHolder?) -> Void in
-          __wrappedFunction.call(std.string(__message), { () -> bridge.std__optional_std__shared_ptr_AnyMap__ in
+      let __result = try self.__implementation.addNativeEventListener(callback: { () -> (String, String?) -> Void in
+        let __wrappedFunction = bridge.wrap_Func_void_std__string_std__optional_std__string_(callback)
+        return { (__message: String, __data: String?) -> Void in
+          __wrappedFunction.call(std.string(__message), { () -> bridge.std__optional_std__string_ in
             if let __unwrappedValue = __data {
-              return bridge.create_std__optional_std__shared_ptr_AnyMap__(__unwrappedValue.cppPart)
+              return bridge.create_std__optional_std__string_(std.string(__unwrappedValue))
             } else {
               return .init()
             }

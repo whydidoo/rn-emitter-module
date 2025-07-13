@@ -8,14 +8,11 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `AnyMap` to properly resolve imports.
-namespace NitroModules { class AnyMap; }
 // Forward declaration of `HybridRnEmitterModuleSpec` to properly resolve imports.
 namespace margelo::nitro::rnemittermodule { class HybridRnEmitterModuleSpec; }
 
 // Include C++ defined types
 #include "HybridRnEmitterModuleSpec.hpp"
-#include <NitroModules/AnyMap.hpp>
 #include <NitroModules/Result.hpp>
 #include <exception>
 #include <functional>

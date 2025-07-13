@@ -12,12 +12,10 @@
 // Forward declaration of `HybridRnEmitterModuleSpec_cxx` to properly resolve imports.
 namespace RnEmitterModule { class HybridRnEmitterModuleSpec_cxx; }
 
-// Forward declaration of `AnyMap` to properly resolve imports.
-namespace NitroModules { class AnyMap; }
+
 
 #include <string>
 #include <optional>
-#include <NitroModules/AnyMap.hpp>
 #include <functional>
 
 #include "RnEmitterModule-Swift-Cxx-Umbrella.hpp"
@@ -59,13 +57,13 @@ namespace margelo::nitro::rnemittermodule {
 
   public:
     // Methods
-    inline void emitToNative(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) override {
+    inline void emitToNative(const std::string& message, const std::optional<std::string>& data) override {
       auto __result = _swiftPart.emitToNative(message, data);
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());
       }
     }
-    inline double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) override {
+    inline double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>& callback) override {
       auto __result = _swiftPart.addNativeEventListener(callback);
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());

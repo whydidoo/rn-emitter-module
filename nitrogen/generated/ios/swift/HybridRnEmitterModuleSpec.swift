@@ -14,8 +14,8 @@ public protocol HybridRnEmitterModuleSpec_protocol: HybridObject {
   
 
   // Methods
-  func emitToNative(message: String, data: AnyMapHolder?) throws -> Void
-  func addNativeEventListener(callback: @escaping (_ message: String, _ data: AnyMapHolder?) -> Void) throws -> Double
+  func emitToNative(message: String, data: String?) throws -> Void
+  func addNativeEventListener(callback: @escaping (_ message: String, _ data: String?) -> Void) throws -> Double
   func removeNativeEventListener(id: Double) throws -> Void
 }
 

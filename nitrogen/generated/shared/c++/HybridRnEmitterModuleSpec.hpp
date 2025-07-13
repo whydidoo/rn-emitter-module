@@ -13,12 +13,10 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
-// Forward declaration of `AnyMap` to properly resolve imports.
-namespace NitroModules { class AnyMap; }
+
 
 #include <string>
 #include <optional>
-#include <NitroModules/AnyMap.hpp>
 #include <functional>
 
 namespace margelo::nitro::rnemittermodule {
@@ -52,8 +50,8 @@ namespace margelo::nitro::rnemittermodule {
 
     public:
       // Methods
-      virtual void emitToNative(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) = 0;
-      virtual double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) = 0;
+      virtual void emitToNative(const std::string& message, const std::optional<std::string>& data) = 0;
+      virtual double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>& callback) = 0;
       virtual void removeNativeEventListener(double id) = 0;
 
     protected:

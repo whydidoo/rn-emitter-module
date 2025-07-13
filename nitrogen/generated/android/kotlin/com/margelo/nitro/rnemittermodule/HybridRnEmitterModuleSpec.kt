@@ -42,13 +42,13 @@ abstract class HybridRnEmitterModuleSpec: HybridObject() {
   // Methods
   @DoNotStrip
   @Keep
-  abstract fun emitToNative(message: String, data: AnyMap?): Unit
+  abstract fun emitToNative(message: String, data: String?): Unit
   
-  abstract fun addNativeEventListener(callback: (message: String, data: AnyMap?) -> Unit): Double
+  abstract fun addNativeEventListener(callback: (message: String, data: String?) -> Unit): Double
   
   @DoNotStrip
   @Keep
-  private fun addNativeEventListener_cxx(callback: Func_void_std__string_std__optional_std__shared_ptr_AnyMap__): Double {
+  private fun addNativeEventListener_cxx(callback: Func_void_std__string_std__optional_std__string_): Double {
     val __result = addNativeEventListener(callback)
     return __result
   }

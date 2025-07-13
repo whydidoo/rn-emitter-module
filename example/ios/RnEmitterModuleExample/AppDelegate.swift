@@ -30,7 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     )
     
     HandlerRnEmitter.shared.register(event: "RNTEST", shouldRespond: true, callback: { data in
-      print("Event was called")
+      print("Event was called", data)
       
       return ["result": "see me"];
     })

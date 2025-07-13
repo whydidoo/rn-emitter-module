@@ -5,7 +5,7 @@ import {RnEmitterModule} from '@whydidoo/rn-emitter-module';
 function App(): React.JSX.Element {
   useEffect(() => {
     const id = RnEmitterModule.addNativeEventListener((event, data) => {
-      console.log(event, data, 'JS');
+      console.log(event, data ? JSON.parse(data): null, 'JS');
     });
 
     return () => {
@@ -17,7 +17,7 @@ function App(): React.JSX.Element {
     <View style={styles.container}>
       <Button
         title="test press"
-        onPress={() => RnEmitterModule.emitToNative('RNTEST')}
+        onPress={() => RnEmitterModule.emitToNative('RNTEST', JSON.stringify({test: 'test data'}))}
       />
     </View>
   );

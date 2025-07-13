@@ -51,8 +51,8 @@ namespace margelo::nitro::rnemittermodule {
 
   public:
     // Methods
-    void emitToNative(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) override;
-    double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) override;
+    void emitToNative(const std::string& message, const std::optional<std::string>& data) override;
+    double addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>& callback) override;
     void removeNativeEventListener(double id) override;
 
   private:

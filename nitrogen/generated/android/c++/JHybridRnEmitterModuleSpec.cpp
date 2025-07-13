@@ -7,15 +7,12 @@
 
 #include "JHybridRnEmitterModuleSpec.hpp"
 
-// Forward declaration of `AnyMap` to properly resolve imports.
-namespace NitroModules { class AnyMap; }
+
 
 #include <string>
 #include <optional>
-#include <NitroModules/AnyMap.hpp>
-#include <NitroModules/JAnyMap.hpp>
 #include <functional>
-#include "JFunc_void_std__string_std__optional_std__shared_ptr_AnyMap__.hpp"
+#include "JFunc_void_std__string_std__optional_std__string_.hpp"
 
 namespace margelo::nitro::rnemittermodule {
 
@@ -38,13 +35,13 @@ namespace margelo::nitro::rnemittermodule {
   
 
   // Methods
-  void JHybridRnEmitterModuleSpec::emitToNative(const std::string& message, const std::optional<std::shared_ptr<AnyMap>>& data) {
-    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* message */, jni::alias_ref<JAnyMap::javaobject> /* data */)>("emitToNative");
-    method(_javaPart, jni::make_jstring(message), data.has_value() ? JAnyMap::create(data.value()) : nullptr);
+  void JHybridRnEmitterModuleSpec::emitToNative(const std::string& message, const std::optional<std::string>& data) {
+    static const auto method = javaClassStatic()->getMethod<void(jni::alias_ref<jni::JString> /* message */, jni::alias_ref<jni::JString> /* data */)>("emitToNative");
+    method(_javaPart, jni::make_jstring(message), data.has_value() ? jni::make_jstring(data.value()) : nullptr);
   }
-  double JHybridRnEmitterModuleSpec::addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>& callback) {
-    static const auto method = javaClassStatic()->getMethod<double(jni::alias_ref<JFunc_void_std__string_std__optional_std__shared_ptr_AnyMap__::javaobject> /* callback */)>("addNativeEventListener_cxx");
-    auto __result = method(_javaPart, JFunc_void_std__string_std__optional_std__shared_ptr_AnyMap___cxx::fromCpp(callback));
+  double JHybridRnEmitterModuleSpec::addNativeEventListener(const std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>& callback) {
+    static const auto method = javaClassStatic()->getMethod<double(jni::alias_ref<JFunc_void_std__string_std__optional_std__string_::javaobject> /* callback */)>("addNativeEventListener_cxx");
+    auto __result = method(_javaPart, JFunc_void_std__string_std__optional_std__string__cxx::fromCpp(callback));
     return __result;
   }
   void JHybridRnEmitterModuleSpec::removeNativeEventListener(double id) {

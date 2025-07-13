@@ -8,8 +8,6 @@
 #pragma once
 
 // Forward declarations of C++ defined types
-// Forward declaration of `AnyMap` to properly resolve imports.
-namespace NitroModules { class AnyMap; }
 // Forward declaration of `HybridRnEmitterModuleSpec` to properly resolve imports.
 namespace margelo::nitro::rnemittermodule { class HybridRnEmitterModuleSpec; }
 
@@ -19,7 +17,6 @@ namespace RnEmitterModule { class HybridRnEmitterModuleSpec_cxx; }
 
 // Include C++ defined types
 #include "HybridRnEmitterModuleSpec.hpp"
-#include <NitroModules/AnyMap.hpp>
 #include <NitroModules/Result.hpp>
 #include <exception>
 #include <functional>
@@ -33,35 +30,35 @@ namespace RnEmitterModule { class HybridRnEmitterModuleSpec_cxx; }
  */
 namespace margelo::nitro::rnemittermodule::bridge::swift {
 
-  // pragma MARK: std::optional<std::shared_ptr<AnyMap>>
+  // pragma MARK: std::optional<std::string>
   /**
-   * Specialized version of `std::optional<std::shared_ptr<AnyMap>>`.
+   * Specialized version of `std::optional<std::string>`.
    */
-  using std__optional_std__shared_ptr_AnyMap__ = std::optional<std::shared_ptr<AnyMap>>;
-  inline std::optional<std::shared_ptr<AnyMap>> create_std__optional_std__shared_ptr_AnyMap__(const std::shared_ptr<AnyMap>& value) {
-    return std::optional<std::shared_ptr<AnyMap>>(value);
+  using std__optional_std__string_ = std::optional<std::string>;
+  inline std::optional<std::string> create_std__optional_std__string_(const std::string& value) {
+    return std::optional<std::string>(value);
   }
   
-  // pragma MARK: std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>
+  // pragma MARK: std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>
   /**
-   * Specialized version of `std::function<void(const std::string&, const std::optional<std::shared_ptr<AnyMap>>&)>`.
+   * Specialized version of `std::function<void(const std::string&, const std::optional<std::string>&)>`.
    */
-  using Func_void_std__string_std__optional_std__shared_ptr_AnyMap__ = std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>;
+  using Func_void_std__string_std__optional_std__string_ = std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>;
   /**
-   * Wrapper class for a `std::function<void(const std::string& / * message * /, const std::optional<std::shared_ptr<AnyMap>>& / * data * /)>`, this can be used from Swift.
+   * Wrapper class for a `std::function<void(const std::string& / * message * /, const std::optional<std::string>& / * data * /)>`, this can be used from Swift.
    */
-  class Func_void_std__string_std__optional_std__shared_ptr_AnyMap___Wrapper final {
+  class Func_void_std__string_std__optional_std__string__Wrapper final {
   public:
-    explicit Func_void_std__string_std__optional_std__shared_ptr_AnyMap___Wrapper(std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>&& func): _function(std::make_shared<std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>>(std::move(func))) {}
-    inline void call(std::string message, std::optional<std::shared_ptr<AnyMap>> data) const {
+    explicit Func_void_std__string_std__optional_std__string__Wrapper(std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>&& func): _function(std::make_shared<std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>>(std::move(func))) {}
+    inline void call(std::string message, std::optional<std::string> data) const {
       _function->operator()(message, data);
     }
   private:
-    std::shared_ptr<std::function<void(const std::string& /* message */, const std::optional<std::shared_ptr<AnyMap>>& /* data */)>> _function;
+    std::shared_ptr<std::function<void(const std::string& /* message */, const std::optional<std::string>& /* data */)>> _function;
   };
-  Func_void_std__string_std__optional_std__shared_ptr_AnyMap__ create_Func_void_std__string_std__optional_std__shared_ptr_AnyMap__(void* _Nonnull swiftClosureWrapper);
-  inline Func_void_std__string_std__optional_std__shared_ptr_AnyMap___Wrapper wrap_Func_void_std__string_std__optional_std__shared_ptr_AnyMap__(Func_void_std__string_std__optional_std__shared_ptr_AnyMap__ value) {
-    return Func_void_std__string_std__optional_std__shared_ptr_AnyMap___Wrapper(std::move(value));
+  Func_void_std__string_std__optional_std__string_ create_Func_void_std__string_std__optional_std__string_(void* _Nonnull swiftClosureWrapper);
+  inline Func_void_std__string_std__optional_std__string__Wrapper wrap_Func_void_std__string_std__optional_std__string_(Func_void_std__string_std__optional_std__string_ value) {
+    return Func_void_std__string_std__optional_std__string__Wrapper(std::move(value));
   }
   
   // pragma MARK: std::shared_ptr<margelo::nitro::rnemittermodule::HybridRnEmitterModuleSpec>
