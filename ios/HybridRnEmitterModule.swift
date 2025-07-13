@@ -7,14 +7,12 @@ struct RNListener<T> {
 }
 
 
-typealias RNMessageCallback = (_ msg: String, _ data: AnyMapHolder?) -> Void
+typealias RNMessageCallback = (_ msg: String, _ data: String?) -> Void
 
 class HybridRnEmitterModule: HybridRnEmitterModuleSpec {
-    
-    
     private var currentListenerId: Double = 0
     private var listeners: [RNListener<RNMessageCallback>] = []
-
+    
     override init() {
         super.init()
 
@@ -29,42 +27,59 @@ class HybridRnEmitterModule: HybridRnEmitterModuleSpec {
     deinit {
         NotificationCenter.default.removeObserver(self)
     }
-
-    func sum(num1: Double, num2: Double) throws -> Double {
-        return num1 + num2
-    }
-
-    func sendNativeEvent(message: String, data: AnyMapHolder?) throws -> Void {
-        print(message)
+    
+    func emitToNative(message: String, data: String?) throws -> Void {
         
+        let parsedData: [String: Any] = {
+            guard
+                let json = data?.data(using: .utf8),
+                let obj = try? JSONSerialization.jsonObject(with: json),
+                let dict = obj as? [String: Any]
+            else {
+                return [:]
+            }
+            
+            return dict
+        }()
+
         NotificationCenter.default.post(
             name: NSNotification.Name("RNEmitterSend"),
             object: nil,
             userInfo: [
                 "event": message,
-                "data": data ?? [:]
+                "data": parsedData
             ]
         )
     }
-
-    func addRNFromNativeListener(callback: @escaping RNMessageCallback) throws -> Double {
+    
+    func addNativeEventListener(callback: @escaping (String, String?) -> Void) throws -> Double {
         currentListenerId += 1
         let listener = RNListener(id: currentListenerId, callback: callback)
         listeners.append(listener)
         return currentListenerId
     }
-
-     func removeListener(id: Double) throws -> Void {
-         listeners.removeAll { $0.id == id }
-     }
-
+    
+    func removeNativeEventListener(id: Double) throws -> Void {
+        listeners.removeAll { $0.id == id }
+    }
+    
     @objc private func handleDidRespondToReactNative(_ notification: Notification) -> Void {
         guard let userInfo = notification.userInfo,
               let event = userInfo["event"] as? String else {
             return
         }
+        
+        
+        let dataJson: String? = {
+            guard let data = userInfo["data"] as? [String: Any],
+                  let jsonData = try? JSONSerialization.data(withJSONObject: data, options: []) else {
+                return nil
+            }
+            return String(data: jsonData, encoding: .utf8)
+        }()
+        
+        
 
-        let data = userInfo["data"] as? AnyMapHolder
-        listeners.forEach { $0.callback(event, data) }
+        listeners.forEach { $0.callback(event, dataJson) }
     }
 }

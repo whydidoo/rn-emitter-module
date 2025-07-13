@@ -16,7 +16,7 @@
 #include <NitroModules/HybridObjectRegistry.hpp>
 
 #include "JHybridRnEmitterModuleSpec.hpp"
-#include "JFunc_void_std__string_std__optional_std__shared_ptr_AnyMap__.hpp"
+#include "JFunc_void_std__string_std__optional_std__string_.hpp"
 #include <NitroModules/JNISharedPtr.hpp>
 #include <NitroModules/DefaultConstructableObject.hpp>
 
@@ -30,7 +30,7 @@ int initialize(JavaVM* vm) {
   return facebook::jni::initialize(vm, [] {
     // Register native JNI methods
     margelo::nitro::rnemittermodule::JHybridRnEmitterModuleSpec::registerNatives();
-    margelo::nitro::rnemittermodule::JFunc_void_std__string_std__optional_std__shared_ptr_AnyMap___cxx::registerNatives();
+    margelo::nitro::rnemittermodule::JFunc_void_std__string_std__optional_std__string__cxx::registerNatives();
 
     // Register Nitro Hybrid Objects
     HybridObjectRegistry::registerHybridObjectConstructor(

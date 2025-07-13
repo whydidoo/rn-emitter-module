@@ -29,7 +29,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       launchOptions: launchOptions
     )
     
-    NativeEmitterBridge.shared // <— просто триггерни init
+    HandlerRnEmitter.shared.register(event: "RNTEST", shouldRespond: true, callback: { data in
+      print("Event was called", data)
+      
+      return ["result": "see me"];
+    })
 
     return true
   }

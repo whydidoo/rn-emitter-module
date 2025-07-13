@@ -1,24 +1,23 @@
 import React, {useEffect} from 'react';
-import {Text, View, StyleSheet, Button} from 'react-native';
-import {RnEmitterModule} from 'react-native-rn-emitter-module';
+import {View, StyleSheet, Button} from 'react-native';
+import {RnEmitterModule} from '@whydidoo/rn-emitter-module';
 
 function App(): React.JSX.Element {
   useEffect(() => {
-    const id = RnEmitterModule.addRNFromNativeListener((event, data) => {
-      console.log(event, data);
+    const id = RnEmitterModule.addNativeEventListener((event, data) => {
+      console.log(event, data ? JSON.parse(data): null, 'JS');
     });
 
     return () => {
-      RnEmitterModule.removeListener(id);
+      RnEmitterModule.removeNativeEventListener(id);
     };
   }, []);
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{RnEmitterModule.sum(6, 2)}</Text>
       <Button
         title="test press"
-        onPress={() => RnEmitterModule.sendNativeEvent('tests message')}
+        onPress={() => RnEmitterModule.emitToNative('RNTEST', JSON.stringify({test: 'test data'}))}
       />
     </View>
   );

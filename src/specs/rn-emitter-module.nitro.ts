@@ -1,10 +1,9 @@
-import { type AnyMap, type HybridObject } from 'react-native-nitro-modules'
+import { type HybridObject } from 'react-native-nitro-modules'
 
-type Callback = (message: string, data?: AnyMap) => void
+type Callback = (message: string, data?: string) => void
 export interface RnEmitterModule
   extends HybridObject<{ ios: 'swift'; android: 'kotlin' }> {
-  sum(num1: number, num2: number): number
-  sendNativeEvent(message: string, data?: AnyMap): void
-  addRNFromNativeListener(callback: Callback): number
-  removeListener(id: number): void
+  emitToNative(message: string, data?: string): void
+  addNativeEventListener(callback: Callback): number
+  removeNativeEventListener(id: number): void
 }
